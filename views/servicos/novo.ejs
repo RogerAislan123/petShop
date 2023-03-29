@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <meta charset="UTF-8">
+        <title>Novo serviço</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <%- include ('../partials/navbar'); %>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Novo Serviço</h3>
+                    <form action="/servicos/salvar" method="POST">
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+                            <input type="text" id="descricao" name="descricao"
+                                    placeholder="Informe o descricao do serviço." class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="preco">Preço</label>
+                            <input type="number" id="preco" name="preco"
+                                    placeholder="Informe o preço do serviço." class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="data">Data do serviço</label>
+                            <input type="date" id="data" name="data"
+                                    placeholder="Informe a data do serviço." class="form-control" required>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Salvar">
+                        <a href="/servicos" class="btn btn-warning">Lista de serviços</a>
+                    </form>
+                </div>
+            </div>
+            <% if(mensagem){ %>
+                <div class="alert alert-info">
+                    <strong>Novo registro!</strong> <%= mensagem %>
+                </div>
+            <% } %>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/util.js"></script>
+    </body>
+</html>

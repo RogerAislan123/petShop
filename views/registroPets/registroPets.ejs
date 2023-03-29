@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registro Pets</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <%- include ('../partials/navbar'); %>
+            <h3>Registro Pets</h3><br>
+            <a href="/registroPets/novo" class="btn btn-primary">Registrar novo Pet</a><br><br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Proprietário</th>
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Nascimento</th>
+                        <th>Raça</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% registroPets.forEach(function(registroPet){ %>
+                        <tr>
+                            <td><%=registroPet.id%></td>
+                            <td><%=registroPet.proprietario%></td>
+                            <td><%=registroPet.nome%></td>
+                            <td><%=formataData(registroPet.nascimento, "BR")%></td>
+                            <td><%=registroPet.raca.nome%></td>
+                            <td><a href="/registroPets/editar/<%=registroPet.id%>" class="fas fa-edit" style="color: black;"
+                                ata-toggle="tooltip" title="Editar registro"></a></td>
+                            <td><a href="/registroPets/excluir/<%=registroPet.id%>"
+                                onclick="return confirm('confirma a exclusão?')" class="fas fa-trash" style="color: black;"
+                                ata-toggle="tooltip" title="Excluir"></a></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/util.js"></script>
+    </body>
+</html>

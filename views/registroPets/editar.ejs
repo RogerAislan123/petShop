@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <meta charset="UTF-8">
+        <title>Registro Pets</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <%- include ('../partials/navbar'); %>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Registro Pets</h3>
+                    <form action="/registroPets/atualizar" method="POST">
+                        <div class="form-group">
+                            <label for="proprietario">Proprietario</label>
+                            <input type="text" id="proprietario" name="proprietario" value="<%=registroPet.proprietario%>"
+                                    placeholder="Nome do proprietario do Pet." class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" value="<%=registroPet.nome%>"
+                                    placeholder="Nome do Pet." class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nascimento">Nascimento</label>
+                            <input type="date" id="nascimento" name="nascimento" value="<%=formataData(registroPet.nascimento, 'ISO')%>"
+                                    placeholder="Nascimento do Pet." class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="raca">Raça</label>
+                            <select id="raca" name="raca" class="form-control">
+                                <% racas.forEach( function(raca){
+                                      if(raca.id == registroPet.racaId){%>
+                                           <option value="<%=raca.id%>" selected><%=raca.nome%></option>
+                                      <%}
+                                        else{%>
+                                           <option value="<%=raca.id%>"><%=raca.nome%></option>
+                                      <%}%>
+                                <%})%>
+                            </select>
+                        </div>
+                        <input type="hidden" name="id" value="<%=registroPet.id%>">
+                        <input type="submit" class="btn btn-primary" value="Atualizar">
+                        <a href="/registroPets" class="btn btn-warning">Lista de Pets</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/util.js"></script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <meta charset="UTF-8">
+        <title>Edição de Raças</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+            integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <%- include ('../partials/navbar'); %>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Edição de Raças</h3>
+                    <form action="/racas/atualizar" method="POST">
+                        <div class="form-group">
+                            <label for="nome">Raça</label>
+                            <input type="text" class="form-control" id="nome" name="nome"
+                                placeholder="Informe a raça do pet." value="<%=raca.nome%>" required>
+                        </div>
+                        <input type="hidden" name="id" value="<%=raca.id%>">
+                        <input type="submit" class="btn btn-primary" value="Atualizar">
+                        <a href="/racas/lista" class="btn btn-warning">Lista de Raças</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/util.js"></script>
+    </body>
+</html>
